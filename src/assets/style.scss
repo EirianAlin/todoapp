@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+$main-bg-color: #292832; 
+$main-accent-color: #7E41EA; 
+$main-orange-color: #E55A3C; 
+$urgent-task-color: #E53557;
+$nonUrgent-task-color: #52BA3D;
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: $main-bg-color;
+    margin: 0;
+    padding: 0;
+}
+
+  .task {
+    display: flex;
+    margin: 10px auto;
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: 30px;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+
+    &.checked {
+        text-decoration: line-through;
+        border-color: transparent;
+        background-color: rgba(255, 255, 255, .5);
+
+        .round {
+            border-color: transparent;
+
+            &:after {
+            border: 2px solid rgb(38, 38, 38);
+            border-top: none;
+            border-right: none;
+            content: "";
+            height: 5px;
+            left: 5px;
+            position: absolute;
+            top: 5px;
+            transform: rotate(-45deg);
+            width: 10px;
+            z-index: 20;
+            }
+        }
+
+        &.checked:after {
+            opacity: 1;
+          }
+    }
+
+    span {
+        padding-left: 10px;
+        font-size: 15px;
+    }
+
+    .round {
+        position: relative;
+        background-color: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+
+        &.urgent {
+            border: 2px solid $urgent-task-color;
+        }
+
+        &.nonUrgent {
+            border: 2px solid $nonUrgent-task-color;
+        }
+      }
+  }
+
+  h4 {
+    color: #fff;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  .add-task {
+    height: 100px;
+    left: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 150px auto 0;
+
+    .inputForTask {
+        width: 100%;
+        border-radius: 30px;
+        padding: 14px;
+        background-color: #fff;
+        border: none;
+        outline: none;
+      }
+
+      button {
+        background-color: $main-accent-color;
+        font-size: 34px;
+        color: #fff;
+        border-radius: 50%;
+        margin-left: 15px;
+        border: none;
+        outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+      }
+
+      .makeUrgent {
+        font-size: 10px;
+        color: #fff;
+        position: relative;
+        left: 38px;
+        top: 4px;
+      }
+
+      .inputForSlider {
+        position: absolute;
+        top: 22px;
+        right: 64px;
+      }
+
+      .add-task-input-wrapper {
+        width: 1000px;
+        flex: 1;
+      }
+
+      .makeUrgant-wrapper {
+        width: 80px;
+      }
+
+      .button-wrapper {
+        width: 80px;
+      }
+  }
+  
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+
+  input {
+    display:none;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    width: 32px;
+    height: 17px;
+    left: 42px;
+    bottom: 12px;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 10px;
+      width: 10px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+      
+    }
+  }
+}
+
+input:checked + .slider {
+  background-color: $main-accent-color;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px $main-accent-color;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  transform: translateX(15px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+  .remove-task-icon {
+     position: absolute;
+     top: 23%;
+     right: 20px;
+     opacity: .4;
+     transition: opacity .4s ease;
+
+     &:hover {
+        opacity: 1;
+     }
+
+     img {
+        max-width: 24px;
+        
+     }
+  }
+
+  .wrapper-stat {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .stat {
+        width: 45%;
+        background-color: rgba(255, 255, 255, .5);
+        border-radius: 10px;
+        padding: 10px;
+
+        h5 {
+          margin-bottom: 10px;
+          font-size: 11px;
+        }
+    }
+  }
+
+  .wrapper-progress {
+    width: 100%;
+    background-color: #fff;
+    height: 5px;
+    border-radius: 3px;
+    overflow: hidden;
+
+    .bar {
+      background-color: $urgent-task-color;
+      height: 100%;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .nonUrgant {
+      background-color: $nonUrgent-task-color;
+    }
+
+  }
+
+  .container {
+    max-width: 88%;
+    margin: 0 auto;
+  }
+
+
+
+  
